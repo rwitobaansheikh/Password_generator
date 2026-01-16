@@ -1,0 +1,121 @@
+body{
+    background-color: #1C1C1C;
+}
+
+.container{
+    background-color: #1F2937;
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    width: 90%;
+    height: 77%;
+    margin: 5% auto;
+    padding-left: 5%
+}
+
+h1{
+    font-size: 350%;
+    margin-bottom: 0;
+}
+
+#green{
+    color: #4ADF86;
+}
+
+#white{
+    color: white;
+}
+
+p{
+    color: rgb(211, 211, 211);
+    margin-top: 0;
+    font-size: xx-large;
+}
+
+#generateBtn{
+    background-color: #10B981;
+    color: white;
+    padding: 1.5% 2%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 2%;
+    font-size: large;
+}
+
+#generateBtn:hover{
+    background-color: #0E9F6E;
+}
+
+#generateBtn:active{
+    background-color: white;
+    color: #10B981;
+}
+
+
+.fields{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid gray;
+    width: 70%;
+    height: 25%;
+}
+
+.passwords{
+    background-color: #273549;
+    width: 48%;
+    height: 30%;
+    border: none;
+    border-radius: 5px;
+    color: #10B981;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    padding-left:0.5%;
+    padding-right:0.5%;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.advanced{
+    display: none
+}
+
+#advanced_tab{
+    background-color: #10B981;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: medium;
+    padding: 0.5% 1%;
+    margin-bottom: 2%;
+}
+#advanced_tab:hover{
+    background-color: #0E9F6E;
+}
+#advanced_tab:active{
+    background-color: white;
+    color: #10B981;
+}
+.advaced_options{
+    color:rgb(211, 211, 211)
+}
+
+input{
+    color:#10B981;
+    background-color: #273549;
+    border:none;
+    border-radius: 5px;
+    width: 40%;
+    text-align: center;
+    padding: 1%;
+    font-family: "Orbitron", sans-serif;
+    height: 40%;
+}
+
+label{
+    color: rgb(211, 211, 211);
+}
