@@ -46,38 +46,7 @@ This project demonstrates modern cloud deployment practices, infrastructure mana
 ## 🏗 Deployment Architecture
 
 The application follows a **modern deployment pattern** to ensure security and scalability:
-┌─────────────┐
-│   Browser   │
-└──────┬──────┘
-       │ HTTPS (443)
-       ▼
-┌─────────────────┐
-│  IONOS DNS      │ ──► A-Record points to AWS Elastic IP
-└─────────────────┘
-       │
-       ▼
-┌─────────────────────────────────┐
-│      AWS EC2 Instance           │
-│  ┌───────────────────────────┐  │
-│  │   Nginx Reverse Proxy     │  │
-│  │  • SSL/TLS Termination    │  │
-│  │  • Port 80 → 443 Redirect │  │
-│  └───────────┬───────────────┘  │
-│              │                   │
-│              ▼                   │
-│  ┌───────────────────────────┐  │
-│  │   Docker Container        │  │
-│  │   (RapidPassGen App)      │  │
-│  │   Port: 8080              │  │
-│  └───────────────────────────┘  │
-│              ▲                   │
-└──────────────┼───────────────────┘
-               │
-        ┌──────┴──────┐
-        │  AWS ECR    │
-        │  (Registry) │
-        └─────────────┘
-
+![alt text](image.png)
 ### Traffic Flow:
 1. **DNS Resolution**: IONOS resolves `rapidpassgen.online` to AWS Elastic IP
 2. **SSL Handshake**: Nginx handles HTTPS encryption via Let's Encrypt certificate
@@ -167,15 +136,7 @@ Managed DNS settings within **IONOS**, pointing the domain to the AWS infrastruc
 ---
 
 ## 📂 Project Structure
-rapidpassgen/
-│
-├── index.html          # Main application page
-├── style.css           # Styling
-├── script.js           # Password generation logic
-├── Dockerfile          # Docker container configuration
-├── nginx.conf          # Nginx reverse proxy config
-└── README.md           # This file
-
+![alt text](image-1.png)
 ---
 
 ## 🚦 Getting Started
@@ -190,7 +151,7 @@ rapidpassgen/
 bash
 
 Clone the repository
-git clone https://github.com/yourusername/rapidpassgen.git
+git clone https://github.com/rwitobaansheikh/Password_generator.git
 cd rapidpassgen
 
 Build Docker image
