@@ -46,7 +46,7 @@ This project demonstrates modern cloud deployment practices, infrastructure mana
 ## 🏗 Deployment Architecture
 
 The application follows a **modern deployment pattern** to ensure security and scalability:
-![alt text](image.png)
+![alt text](image-2.png)
 ### Traffic Flow:
 1. **DNS Resolution**: IONOS resolves `rapidpassgen.online` to AWS Elastic IP
 2. **SSL Handshake**: Nginx handles HTTPS encryption via Let's Encrypt certificate
