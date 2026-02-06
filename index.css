@@ -79,9 +79,16 @@ p{
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
+    overflow: auto;
 }
+
 .advanced{
-    display: none
+    display: none;
+    margin: 0;
+    padding: 0.5% 0;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 20%;
 }
 
 #advanced_tab{
@@ -91,7 +98,7 @@ p{
     border-radius: 5px;
     font-size: medium;
     padding: 0.5% 1%;
-    margin-bottom: 2%;
+    margin-bottom: 0.5%;
 }
 #advanced_tab:hover{
     background-color: #0E9F6E;
@@ -101,7 +108,12 @@ p{
     color: #10B981;
 }
 .advaced_options{
-    color:rgb(211, 211, 211)
+    color:rgb(211, 211, 211);     
+    display: block;                          
+}
+
+.advanced_options input{
+    height: 80%;
 }
 
 input{

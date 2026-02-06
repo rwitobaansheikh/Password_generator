@@ -12,17 +12,18 @@
         <h1><span id="green">Generate a</span> <br><span id="white">random password</span></h1>
         <p>Never use an insecure password again.</p>
         </div>
-        <button id="advanced_tab" onclick="show_advanced()">Advanced</button>
+        <button id="advanced_tab">Advanced</button>
         <div class="advanced">
-            <div class="advanced_options" id="advanced_options">
+            <div class="advanced_options">
                 <label for="length">Password Length:</label>
                 <input type="number" id="length" name="length" min="4" max="64">
-                <br>
+            </div>   
+            <div class="advanced_options">
                 <label for="exclude_characters">Exclude Characters:</label>
                 <input type="text" id="exclude_characters" name="exclude_characters" placeholder="e.g. abc123">
             </div>   
         </div>
-        <button id="generateBtn" onclick="generaterandompassword()">Generate passwords</button>
+        <button id="generateBtn">Generate passwords</button>
         <div class="fields">
             <div class="passwords" id="field1" onclick="copyPassword('field1')"></div>
             <div class="passwords" id="field2" onclick="copyPassword('field2')"></div>
