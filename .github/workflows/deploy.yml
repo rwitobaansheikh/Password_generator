@@ -56,4 +56,4 @@ jobs:
             docker image prune -f
 
             # --- NEW: Automate Nginx refresh ---
-            sudo nginx -t && sudo systemctl reload nginx
+            sudo nginx -t && sudo systemctl restart nginx
