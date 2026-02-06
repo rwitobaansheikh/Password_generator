@@ -178,10 +178,67 @@ docker run -d -p 8080:80 rapidpassgen:latest
 
 ---
 
+## ⚙️ CI/CD Pipeline
+
+A GitHub Actions workflow builds the Docker image on push to `main`, pushes the image to AWS ECR Public, and deploys to the EC2 host via SSH.
+
+Sample workflow (`.github/workflows/ci-cd.yml`):
+
+```yaml
+name: CI/CD
+
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+    build-and-push:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up QEMU
+                uses: docker/setup-qemu-action@v2
+            - name: Set up Docker Buildx
+                uses: docker/setup-buildx-action@v2
+            - name: Login to Amazon ECR Public
+                uses: aws-actions/amazon-ecr-login@v2
+            - name: Build and push image
+                uses: docker/build-push-action@v4
+                with:
+                    context: .
+                    push: true
+                    tags: public.ecr.aws/your-registry/rapidpassgen:latest
+
+    deploy:
+        needs: build-and-push
+        runs-on: ubuntu-latest
+        steps:
+            - name: Start SSH agent
+                uses: webfactory/ssh-agent@v0.5.4
+                with:
+                    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+            - name: Deploy to EC2
+                run: |
+                    ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+                        "docker pull public.ecr.aws/your-registry/rapidpassgen:latest && docker stop rapidpassgen || true && docker rm rapidpassgen || true && docker run -d --name rapidpassgen -p 8080:80 public.ecr.aws/your-registry/rapidpassgen:latest"
+```
+
+Required repository secrets:
+- `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION`
+- `SSH_PRIVATE_KEY`
+- `EC2_HOST`, `EC2_USER`
+- `ECR_REGISTRY` (optional)
+
+Notes:
+- Adjust the workflow to use ECS/Fargate, CodeDeploy, or another deployment target if preferred.
+- Consider adding image scanning or testing steps before push.
+
+
 ## 🎯 Future Enhancements
 
 - [ ] Add password strength meter
-- [ ] Implement CI/CD pipeline with GitHub Actions
+- [x] Implement CI/CD pipeline with GitHub Actions
 - [ ] Add database for password history (encrypted)
 - [ ] Implement auto-scaling with AWS ECS/Fargate
 - [ ] Add monitoring with CloudWatch or Prometheus
