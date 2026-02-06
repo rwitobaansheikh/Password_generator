@@ -43,6 +43,8 @@ jobs:
             
             # Remove old container
             docker rm -f rapidpassgen || true
+
+            sudo fuser -k 80/tcp || true
             
             # Run new container
             # Using your existing port mapping: 8080 host to 80 container
