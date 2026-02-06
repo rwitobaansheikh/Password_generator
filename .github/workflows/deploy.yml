@@ -50,8 +50,6 @@ jobs:
             # Using your existing port mapping: 8080 host to 80 container
             docker run -d --name rapidpassgen \
             -p 8080:80 \
-            -p 443:443 \
-            -v /etc/letsencrypt:/etc/letsencrypt \
             public.ecr.aws/u6o5d5r2/rapidpassgen:latest
 
             # Clean up old images
